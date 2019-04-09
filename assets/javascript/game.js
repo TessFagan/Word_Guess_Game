@@ -49,12 +49,31 @@ console.log(computerchoicearray)
 // make an empty array to capture index positions of userguess
 var indexpositions = []
 
-
+function restart(guessesremaining) {
+    if (guessesremaining === 0) {
+        alert("youlose!");
+        var computerchoice = gamewordoptions[Math.floor(Math.random() * gamewordoptions.length)];
+        console.log(computerchoice);
+        var userguesses = [""];
+        console.log(userguesses);
+        var hangmanspaces = [];
+        hangmanspaces.length = computerchoice.length;
+        console.log(hangmanspaces);
+        hangmanspaces.fill("_");
+        console.log(hangmanspaces);
+        document.getElementById("hangmanspaces").innerHTML = hangmanspaces;
+        var computerchoicearray = computerchoice.split("");
+        console.log(computerchoicearray);
+        var userguessstring = userguesses.toString();
+        document.getElementById("guesses").innerHTML = userguessstring;
+        var guessesremaining = 12;
+        console.log(guessesremaining);
+    }
+}
 
 for (i = 0; i < gamewordoptions.length; i++) {
 
     document.onkeyup = function (event) {
-
         // get the content of the user input
         var input = event.key.toLowerCase();
         var text = input;
@@ -69,6 +88,7 @@ for (i = 0; i < gamewordoptions.length; i++) {
             document.getElementById("guesses").innerHTML = userguessstring;
             guessesremaining--
             console.log(guessesremaining)
+            restart(guessesremaining)
         }
 
         // see if the guess is part of computer chosen word, if it is, alert success
@@ -97,9 +117,8 @@ for (i = 0; i < gamewordoptions.length; i++) {
                 }
             }
         }
-        if (guessesremaining === 0) {
-            alert("You Lose!")
-        }
+        // if (guessesremaining === 0) {
+        // alert("You Lose!")
+        // }
     }
-
 }
