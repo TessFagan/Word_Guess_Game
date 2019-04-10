@@ -49,27 +49,27 @@ console.log(computerchoicearray)
 // make an empty array to capture index positions of userguess
 var indexpositions = []
 
-function restart(guessesremaining) {
-    if (guessesremaining === 0) {
-        alert("youlose!");
-        var computerchoice = gamewordoptions[Math.floor(Math.random() * gamewordoptions.length)];
-        console.log(computerchoice);
-        var userguesses = [""];
-        console.log(userguesses);
-        var hangmanspaces = [];
-        hangmanspaces.length = computerchoice.length;
-        console.log(hangmanspaces);
-        hangmanspaces.fill("_");
-        console.log(hangmanspaces);
-        document.getElementById("hangmanspaces").innerHTML = hangmanspaces;
-        var computerchoicearray = computerchoice.split("");
-        console.log(computerchoicearray);
-        var userguessstring = userguesses.toString();
-        document.getElementById("guesses").innerHTML = userguessstring;
-        var guessesremaining = 12;
-        console.log(guessesremaining);
-    }
-}
+// function restart(guessesremaining) {
+//     if (guessesremaining === 0) {
+//         alert("youlose!");
+//         var computerchoice = gamewordoptions[Math.floor(Math.random() * gamewordoptions.length)];
+//         console.log(computerchoice);
+//         var userguesses = [""];
+//         console.log(userguesses);
+//         var hangmanspaces = [];
+//         hangmanspaces.length = computerchoice.length;
+//         console.log(hangmanspaces);
+//         hangmanspaces.fill("_");
+//         console.log(hangmanspaces);
+//         document.getElementById("hangmanspaces").innerHTML = hangmanspaces;
+//         var computerchoicearray = computerchoice.split("");
+//         console.log(computerchoicearray);
+//         var userguessstring = userguesses.toString();
+//         document.getElementById("guesses").innerHTML = userguessstring;
+//         var guessesremaining = 12;
+//         console.log(guessesremaining);
+//     }
+// }
 
 for (i = 0; i < gamewordoptions.length; i++) {
 
@@ -79,41 +79,41 @@ for (i = 0; i < gamewordoptions.length; i++) {
         var text = input;
         console.log(text);
         // see if it is part of the a-z, if it is, add to guess array
-        if (lowerAlph.indexOf(text) === -1) {
-            alert("NOT VALID GUESS")
-        }
-        else {
-            userguesses.push(text);
-            var userguessstring = userguesses.toString();
-            document.getElementById("guesses").innerHTML = userguessstring;
-            guessesremaining--
-            console.log(guessesremaining)
-            restart(guessesremaining)
-        }
+        // if (lowerAlph.indexOf(text) === -1) {
+        // alert("NOT VALID GUESS")
+        // }
+        // else {
+        // userguesses.push(text);
+        // var userguessstring = userguesses.toString();
+        // document.getElementById("guesses").innerHTML = userguessstring;
+        // guessesremaining--
+        // console.log(guessesremaining)
+        restart(guessesremaining)
+    }
 
-        // see if the guess is part of computer chosen word, if it is, alert success
+    // see if the guess is part of computer chosen word, if it is, alert success
 
-        if (computerchoicearray.indexOf(text) === -1) {
-            alert("NO LUCK");
-        }
-        else {
-            alert("Success!");
-            for (j = 0; j < computerchoicearray.length; j++) {
-                if (computerchoicearray[j] === text) {
-                    console.log(j);
-                    indexpositions.push(j);
-                    console.log(indexpositions)
-                    hangmanspaces[j] = text
-                    console.log(hangmanspaces)
-                    document.getElementById("hangmanspaces").innerHTML = hangmanspaces;
-                    hangmanspacesstring = hangmanspaces.join("")
-                    console.log(hangmanspacesstring)
-                    if (hangmanspacesstring === computerchoice) {
-                        alert("you win!");
-                        totalwins++
-                        document.getElementById("wins").innerHTML = totalwins;
-                        console.log(totalwins)
-                    }
+    // if (computerchoicearray.indexOf(text) === -1) {
+    // alert("NO LUCK");
+    // }
+    // else {
+    // alert("Success!");
+    // for (j = 0; j < computerchoicearray.length; j++) {
+    // if (computerchoicearray[j] === text) {
+    // console.log(j);
+    // indexpositions.push(j);
+    // console.log(indexpositions)
+    // hangmanspaces[j] = text
+    // console.log(hangmanspaces)
+    // document.getElementById("hangmanspaces").innerHTML = hangmanspaces;
+    // hangmanspacesstring = hangmanspaces.join("")
+    // console.log(hangmanspacesstring)
+    // if (hangmanspacesstring === computerchoice) {
+    // alert("you win!");
+    // totalwins++
+    // document.getElementById("wins").innerHTML = totalwins;
+    // console.log(totalwins)
+}
                 }
             }
         }
